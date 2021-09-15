@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id= "time"></div>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <div id= "time2"></div>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <div id="clock">
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+        </div>
+    </div>
+    
+    
+    <script>
+      setInterval(()=>{
+          const time = document.querySelector("#time");
+          let date = new Date();
+          let hours = date.getHours();
+          let minutes = date.getMinutes();
+          let seconds = date.getSeconds();
+          let ampm = hours >= 12 ? 'PM' : 'AM';
+          if (hours > 12)
+          {
+              hours = hours-12;
+          }
+          if (hours < 10)
+          {
+              hours = "0"+hours;
+          }
+
+          if (minutes < 10)
+          {
+              minutes = "0"+minutes;
+          }
+
+          if (seconds < 10)
+          {
+              seconds = "0"+seconds;
+          }
+          time.textContent = hours + ":" + minutes + ":" + seconds+ " "+ ampm ;
+      });
+      
+      setInterval(()=>{
+        const time = document.querySelector("#time2");
+          let date = new Date();
+          let hours = date.getHours();
+          let minutes = date.getMinutes();
+          let seconds = date.getSeconds();
+    
+          if (hours < 10)
+          {
+              hours = "0"+hours;
+          }
+
+          if (minutes < 10)
+          {
+              minutes = "0"+minutes;
+          }
+
+          if (seconds < 10)
+          {
+              seconds = "0"+seconds;
+          }
+          time.textContent = hours + ":" + minutes + ":" + seconds;
+      });
+
+    setInterval(() => {
+    date = new Date();
+    hr = date.getHours();
+    min = date.getMinutes();
+    sec = date.getSeconds();
+    hr_rotation = 30*hr + min/2;
+    min_rotation = 6*min;
+    sec_rotation = 6*sec;
+
+    hour.style.transform = `rotate(${hr_rotation}deg)`;
+    minute.style.transform = `rotate(${min_rotation}deg)`;
+    second.style.transform = `rotate(${sec_rotation}deg)`;
+}, 1000);
+    </script>
+</body>
+</html>
